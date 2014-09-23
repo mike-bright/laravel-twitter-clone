@@ -10,7 +10,8 @@ gulp.task('style', function() {
         .pipe(sass({ style: 'expanded' }))
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
         .pipe(gulp.dest('public/css/tmp'))
-        .pipe(concat('app.css'));
+        .pipe(concat('style.css'))
+        .pipe(gulp.dest('public/css'));
 });
 
 gulp.task('clean-style', function () {

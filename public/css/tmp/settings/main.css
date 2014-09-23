@@ -1,0 +1,8 @@
+div.minicolors {
+  width: 100% !important;
+  margin-bottom: 10px;
+}
+div.minicolors input {
+  width: 100% !important;
+  height: 30px !important;
+}

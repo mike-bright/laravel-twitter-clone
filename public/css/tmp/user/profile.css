@@ -1,0 +1,20 @@
+div.header-image {
+  width: 100%;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 30%;
+  min-height: 300px;
+}
+div.header-image img {
+  min-width: 100%;
+  width: auto;
+  height: 100%;
+}
+
+div.profile-content {
+  margin-top: 200px;
+}
