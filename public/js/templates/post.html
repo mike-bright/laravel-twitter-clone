@@ -1,0 +1,40 @@
+<div class="panel panel-default post-container">
+    <div class="panel-heading post-heading">
+        <div class="post-profile-image">
+            <img src="http://fillmurray.com/50/50" alt="Profile Image" class="img-circle" height="50" width="50">
+        </div>
+        <div class="">
+            <a href="#" class="showUser">
+                Username
+            </a>
+            <!-- @if ($post->userId === User::getCurrent()->id) -->
+                <a href="#" class="pull-right delete">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+            <!-- @endif -->
+        </div>
+    </div>
+    <div class="panel-body">
+    	<%= text %>
+        <!-- @if ($post->source)
+            <div class="well repost-well">
+                Reposted from
+                <a class="repost-source" souce-id="{{$post->source->source->id}}">
+                    {{urldecode('%40')}}{{$post->source->source->user->userName}}
+                </a>
+            </div>
+        @endif -->
+    </div>
+    <div class="panel-footer post-footer">
+       <!--  @if ($repost = $post->repostBy(User::getCurrent()))
+            <span class="glyphicon glyphicon-retweet" title="Reposted at {{$repost->created_at->toDayDateTimeString()}}"></span>
+        @elseif ($post->userId === User::getCurrent()->id)
+        @else
+            <a class="ajax" href="{{action('RepostController@create', $post->id)}}">
+                <span class="glyphicon glyphicon-retweet"></span>
+            </a>
+        @endif -->
+        <div class="pull-right"><%= new Date(created_at).toString() %></div>
+        <div class="clearfix"></div>
+    </div>
+</div>
