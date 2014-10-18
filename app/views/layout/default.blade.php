@@ -13,7 +13,9 @@
 	<div id="main" class="container">
 		@yield('content')
 	</div>
-	{{HTML::script('/js/app.js')}}
     {{HTML::script('/components/bootstrap/dist/js/bootstrap.min.js')}}
+	@if (User::getCurrent())
+		<script data-main="js/main" src="js/lib/requirejs/require.js"></script>
+	@endif
 </body>
 </html>
