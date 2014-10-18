@@ -4,10 +4,6 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 			text: null,
 			created_at: Date.now()
 		},
-		parse: function(response) {
-			response.id = response._id;
-			return response;
-		},
 		initialize: function() {
 
 		},

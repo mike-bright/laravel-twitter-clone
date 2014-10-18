@@ -93,8 +93,9 @@ class PostController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($post)
+	public function destroy($id)
 	{
+		$post = Post::find($id);
         $post->reposts()->delete();
         $post->source()->delete();
 
