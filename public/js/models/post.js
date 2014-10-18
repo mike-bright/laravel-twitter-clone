@@ -1,7 +1,8 @@
 define(['underscore', 'backbone'], function(_, Backbone) {
 	var PostModel = Backbone.Model.extend({
 		defaults: {
-			text: null
+			text: null,
+			created_at: Date.now()
 		},
 		parse: function(response) {
 			response.id = response._id;

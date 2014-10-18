@@ -35,9 +35,9 @@ define([
 				e.preventDefault();
 
 				this.collection.create(new Post({
-					'content': $('#content').val()
+					'text': $('#text').val()
 				}));
-				$('#content').val('');
+				$('#text').val('');
 			}
 		});
 		return AppView;

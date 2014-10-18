@@ -1,7 +1,7 @@
-<form role="form" action="/post/new" method="post">
+<form role="form" action="#">
 	<div class="post-form-container">
-		<input type="text" name="text" class="form-control" placeholder="Enter new post...">
-		<input type="submit" class="btn btn-default pull-right" value="Post">
+		<input type="text" name="text" id="text" class="form-control" placeholder="Enter new post...">
+		<button class="btn btn-default pull-right" id="add">Post</button>
     </div>
 </form>
 <div class="clearfix"></div>
