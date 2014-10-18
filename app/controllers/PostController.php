@@ -9,7 +9,9 @@ class PostController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$user = User::getCurrent();
+		$posts = Post::fetchAllHomePosts($user);
+		return $posts->get();
 	}
 
 
@@ -20,6 +22,17 @@ class PostController extends \BaseController {
 	 */
 	public function create()
 	{
+		//not used
+	}
+
+
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return Post object
+	 */
+	public function store()
+	{
 		if(Input::has('text')){
 			$post = new Post();
 			$post->text = Input::get('text');
@@ -27,18 +40,7 @@ class PostController extends \BaseController {
 			$post->imageId = Image::getBlankImage()->id;
 			$post->save();
 		}
-		return Redirect::to('/');
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
+		return $post;
 	}
 
 
@@ -46,11 +48,11 @@ class PostController extends \BaseController {
 	 * Display the specified resource.
 	 *
 	 * @param  int  $id
-	 * @return Response
+	 * @return Post Object
 	 */
 	public function show($id)
 	{
-		//
+		return Post::find($id);
 	}
 
 
@@ -62,7 +64,7 @@ class PostController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		//not used
 	}
 
 
@@ -70,10 +72,18 @@ class PostController extends \BaseController {
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int  $id
-	 * @return Response
+	 * @return Post Object
 	 */
 	public function update($id)
 	{
+		$post = Post::find($id);
+		if (Input::get('text'))
+			$post->text = Input::get('text');
+		$post->userId = User::getCurrent()->id;
+		$post->imageId = Image::getBlankImage()->id;
+		$post->save();
+
+		return $post;
 	}
 
 
@@ -89,39 +99,12 @@ class PostController extends \BaseController {
         $post->source()->delete();
 
 		$post->delete();
-		return Redirect::to('/');
+
+		return 1;
 	}
 
 	public function search($query)
 	{
-		Post::where('text', 'LIKE', $query);
+		return Post::where('text', 'LIKE', $query);
 	}
-
-    public function latestUpdateTime()
-    {
-        $user = User::getCurrent();
-        $latest = Post::fetchAllHomePosts($user)->first()->updated_at;
-        return Response::json(array('updated_at' => $latest));
-    }
-
-    public static function postsSince($postId)
-    {
-        $return = array();
-        $return['posts'] = "";
-        $user = User::getCurrent();
-
-        $newPosts = Post::fetchAllHomePosts($user)
-            ->where('id', '>', $postId)
-            ->get();
-        $return['count'] = count($newPosts);
-
-        if (!empty($newPosts)) {
-            foreach ($newPosts as $post) {
-                $return['posts'] .= View::make('post.post', array('post' => $post));
-            }
-        }
-
-        return Response::json($return);
-    }
-
 }
