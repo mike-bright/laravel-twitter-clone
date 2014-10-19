@@ -9,9 +9,21 @@ class PostController extends \BaseController {
 	 */
 	public function index()
 	{
+		$return = array();
 		$user = User::getCurrent();
+		
+		$count = Post::fetchAllHomePosts($user)->get()->count();
+		$return['count'] = $count;
+
 		$posts = Post::fetchAllHomePosts($user);
-		return $posts->get();
+		if (Input::has('offset'))
+			$posts->skip(Input::get('offset'));
+		if (Input::has('limit'))
+			$posts->take(Input::get('limit'));
+		$posts = $posts->get();
+		$return['posts'] = $posts;
+		
+		return $return;
 	}
 
 

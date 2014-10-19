@@ -11,7 +11,19 @@ class Post extends Eloquent {
     	$userIds = array($user->id);
     	$userIds = array_merge($userIds, $user->getFollowingIds());
     	return Post::whereIn('userId', $userIds)
-            ->orderBy('created_at', 'desc');
+            ->join('user', function($join) {
+                $join->on('user.id', '=', 'post.userId');
+            })
+            ->leftJoin('repost', function($join) {
+                $join->on('repost.sourcePostId', '=', 'post.id');
+            })
+            ->groupBy('post.id')
+            ->orderBy('post.created_at', 'desc')
+            ->select(array(
+                'post.*',
+                'user.userName',
+                DB::raw('count(repost.id) as reposts')
+                ));
     }
 
     public function user()

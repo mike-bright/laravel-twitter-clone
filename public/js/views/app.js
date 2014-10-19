@@ -2,34 +2,53 @@ define([
 	'underscore',
 	'backbone',
 	'views/post',
+	'views/user',
 	'models/post',
-	'collections/posts'
-	], function(_, Backbone, PostView, Post, PostsCollection) {
+	'models/user',
+	'collections/posts',
+	'text!templates/paginator.html'
+	], function(_, Backbone, PostView, UserView, Post, User, PostsCollection, paginatorTemplate) {
 		var AppView = Backbone.View.extend({
 			el: 'div.container',
+			paginator: _.template(paginatorTemplate),
 			events: {
 				'click #add': 'createPost'
 			},
 			initialize: function() {
+				//get current user
+				this.currentUser = new User();
 				var self = this;
-				this.collection = new PostsCollection();
-				this.collection.fetch().done(function() {
-					self.render();
-					self.listenTo(self.collection, 'add', self.renderPost);
+				this.currentUser.fetch().done(function() {
+					self.renderUser(self.currentUser);
 				});
 
-				// this.listenTo(this.collection, 'reset', this.render);	
+				//get posts
+				this.collection = new PostsCollection();
+				self.listenTo(self.collection.fullCollection, 'add', self.renderPost);
+				this.collection.getFirstPage();
+
+			    _.bindAll(this, 'fetchPosts');
+			    // bind to window
+			    // TO DO: add a more link at the bottom or detect scrolling to the bottom
+			    $(window).scroll(this.fetchPosts);
 			},
 			renderPost: function(item) {
 				postView = new PostView({
 					model: item
 				});
-				this.$el.find('#posts').prepend(postView.render().el)
+				this.$el.find('#posts').prepend(postView.render().el);
 			},
-			render: function() {
-				this.collection.each(function(item){
-					this.renderPost(item);
-				}, this);
+			renderUser: function(user) {
+				userView = new UserView({
+					model: user
+				});
+				this.$el.find('#user').append(userView.render().el);
+			},
+			fetchPosts: function() {
+				if (this.collection.hasNextPage())
+    				this.collection.getNextPage();
+    			else
+    				$(window).unbind('scroll');
 			},
 			createPost: function(e) {
 				e.preventDefault();

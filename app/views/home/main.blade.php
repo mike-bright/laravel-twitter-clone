@@ -1,6 +1,7 @@
 @extends('layout.default')
 @section('content')
 	<div class="row col-md-4">
+		<div id="user"></div>
 		@include('post.form')
 	</div>
 	<div class="row col-md-1"></div>

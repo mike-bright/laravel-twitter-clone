@@ -15,6 +15,7 @@ Route::match(array('GET', 'POST'), '/signup', 'UserController@showSignup');
 Route::get('/user/{userName}', array('before' => 'auth', 'uses' => 'UserController@showProfile'));
 Route::get('/api/user/follow/{user}', array('before' => 'auth', 'uses' => 'UserController@followUser'));
 Route::get('/api/user/unfollow/{user}', array('before' => 'auth', 'uses' => 'UserController@unfollowUser'));
+Route::get('/api/user', array('before' => 'auth', 'uses' => 'UserController@index'));
 
 //PostController
 Route::resource('/api/post', 'PostController', array('before' => 'auth'));

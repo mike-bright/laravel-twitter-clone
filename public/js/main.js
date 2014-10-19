@@ -3,6 +3,7 @@ require.config({
 		'jquery': 'lib/jquery/dist/jquery',
 		'underscore': 'lib/underscore/underscore',
 		'backbone': 'lib/backbone/backbone',
+		'paginator': 'lib/backbone.paginator/lib/backbone.paginator',
 		'text': 'lib/text'
 	},
 	shim: {

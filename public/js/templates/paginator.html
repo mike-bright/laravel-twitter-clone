@@ -1,0 +1,10 @@
+<ul>
+	<% _.each (pageSet, function (p) { %>
+		<% if (currentPage == p) { %>
+		  <li class="active"><span><%= p %></span></li>
+		<% } else { %>
+		  <li><a href="#" class="page"><%= p %></a></li>
+		<% } %>
+	<% }); %>
+</ul>
+

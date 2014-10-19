@@ -86,4 +86,9 @@ class UserController extends BaseController {
 		}
 		return Redirect::to('/');
 	}
+
+	public function index()
+	{
+		return User::getCurrent();
+	}
 }
