@@ -36,7 +36,10 @@ define([
 				postView = new PostView({
 					model: item
 				});
-				this.$el.find('#posts').prepend(postView.render().el);
+				if (item.isNew())
+					this.$el.find('#posts').prepend(postView.render().el);
+				else
+					this.$el.find('#posts').append(postView.render().el);
 			},
 			renderUser: function(user) {
 				userView = new UserView({
