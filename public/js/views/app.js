@@ -12,7 +12,8 @@ define([
 			el: 'div.container',
 			paginator: _.template(paginatorTemplate),
 			events: {
-				'click #add': 'createPost'
+				'click #add': 'createPost',
+				'click #loadMore': 'fetchPosts'
 			},
 			initialize: function() {
 				//get current user
@@ -24,13 +25,8 @@ define([
 
 				//get posts
 				this.collection = new PostsCollection();
-				self.listenTo(self.collection.fullCollection, 'add', self.renderPost);
+				this.listenTo(this.collection.fullCollection, 'add', this.renderPost);
 				this.collection.getFirstPage();
-
-			    _.bindAll(this, 'fetchPosts');
-			    // bind to window
-			    // TO DO: add a more link at the bottom or detect scrolling to the bottom
-			    $(window).scroll(this.fetchPosts);
 			},
 			renderPost: function(item) {
 				postView = new PostView({
@@ -51,7 +47,7 @@ define([
 				if (this.collection.hasNextPage())
     				this.collection.getNextPage();
     			else
-    				$(window).unbind('scroll');
+    				$('#loadMore').remove();
 			},
 			createPost: function(e) {
 				e.preventDefault();
