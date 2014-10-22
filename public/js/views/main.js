@@ -8,7 +8,7 @@ define([
 	'collections/posts',
 	'text!templates/paginator.html'
 	], function(_, Backbone, PostView, UserView, Post, User, PostsCollection, paginatorTemplate) {
-		var AppView = Backbone.View.extend({
+		var MainView = Backbone.View.extend({
 			el: 'div.container',
 			paginator: _.template(paginatorTemplate),
 			events: {
@@ -53,10 +53,11 @@ define([
 				e.preventDefault();
 
 				this.collection.create(new Post({
-					'text': $('#text').val()
+					'text': $('#text').val(),
+					'currentUser': 1
 				}));
 				$('#text').val('');
 			}
 		});
-		return AppView;
+		return MainView;
 	});
