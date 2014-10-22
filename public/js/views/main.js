@@ -2,20 +2,22 @@ define([
 	'underscore',
 	'backbone',
 	'views/post',
-	'views/user',
+	'views/userbadge',
 	'models/post',
 	'models/user',
 	'collections/posts',
-	'text!templates/paginator.html'
-	], function(_, Backbone, PostView, UserView, Post, User, PostsCollection, paginatorTemplate) {
+	'text!templates/main.html'
+	], function(_, Backbone, PostView, UserBadgeView, Post, User, PostsCollection, mainTemplate) {
 		var MainView = Backbone.View.extend({
 			el: 'div.container',
-			paginator: _.template(paginatorTemplate),
+			template: _.template(mainTemplate),
 			events: {
 				'click #add': 'createPost',
 				'click #loadMore': 'fetchPosts'
 			},
 			initialize: function() {
+				this.$el.html(this.template());
+
 				//get current user
 				this.currentUser = new User();
 				var self = this;
@@ -38,7 +40,7 @@ define([
 					this.$el.find('#posts').append(postView.render().el);
 			},
 			renderUser: function(user) {
-				userView = new UserView({
+				userView = new UserBadgeView({
 					model: user
 				});
 				this.$el.find('#user').append(userView.render().el);

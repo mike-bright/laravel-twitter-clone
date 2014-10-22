@@ -23,7 +23,7 @@ class UserController extends BaseController {
 		return Redirect::to('/');
 	}
 
-	public function showProfile($userName)
+	public function getUser($userName)
 	{
 		try {
 			$user = User::where('userName', '=', $userName)->firstOrFail();
@@ -39,13 +39,11 @@ class UserController extends BaseController {
 		$isCurrent = $user->id === $currentUser->id;
 		$posts = $user->posts->take(10);
 
-		$viewData = array(
-			'user' => $user,
-			'isFollowing' => $isFollowing,
-			'isCurrent' => $isCurrent,
-			'posts' => $posts
-			);
-		return View::make('user.profile', $viewData);
+		$user['isFollowing'] = $isFollowing;
+		$user['isCurrent'] = $isCurrent;
+		$user['posts'] = $posts;
+
+		return Response::json($user);
 	}
 
 	public function followUser($user)

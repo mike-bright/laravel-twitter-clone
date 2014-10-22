@@ -25,7 +25,7 @@
         <li><a href="/settings" title="Settings"><span class="glyphicon glyphicon-cog"></span></a></li>
         <li><a href="{{action('UserController@logout')}}">Logout</a></li>
         <li>
-            <a href="{{action('UserController@showProfile', User::getCurrent()->userName)}}" class="nav-profile-link">
+            <a href="/#user/{{User::getCurrent()->userName}}" class="nav-profile-link">
                 <img src="http://fillmurray.com/49/49" alt="Profile Image" class="img-circle" height="49" width="49">
             </a>
         </li>
