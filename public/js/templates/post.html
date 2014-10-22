@@ -4,13 +4,13 @@
             <img src="http://fillmurray.com/50/50" alt="Profile Image" class="img-circle" height="50" width="50">
         </div>
         <div class="">
-            <a href="#" class="showUser">
+            <a class="showUser">
             </a>
-            <!-- @if ($post->userId === User::getCurrent()->id) -->
-                <a href="#" class="pull-right delete">
+            <% if(currentUser) { %>
+                <a class="pull-right delete">
                     <span class="glyphicon glyphicon-trash"></span>
                 </a>
-            <!-- @endif -->
+            <% } %>
         </div>
         <div class="clearfix"></div>
     </div>
