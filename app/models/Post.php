@@ -22,7 +22,8 @@ class Post extends Eloquent {
             ->select(array(
                 'post.*',
                 'user.userName',
-                DB::raw('count(repost.id) as reposts')
+                DB::raw('count(repost.id) as reposts'),
+                DB::raw('if(user.id = ' . $user->id .', 1, 0) as currentUser')
                 ));
     }
 
