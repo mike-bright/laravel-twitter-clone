@@ -27,6 +27,25 @@ class Post extends Eloquent {
                 ));
     }
 
+    public static function fetchUserPosts(User $user)
+    {
+        return Post::where('userId', $user->id)
+            ->join('user', function($join) {
+                $join->on('user.id', '=', 'post.userId');
+            })
+            ->leftJoin('repost', function($join) {
+                $join->on('repost.sourcePostId', '=', 'post.id');
+            })
+            ->groupBy('post.id')
+            ->orderBy('post.created_at', 'desc')
+            ->select(array(
+                'post.*',
+                'user.userName',
+                DB::raw('count(repost.id) as reposts'),
+                DB::raw('if(user.id = ' . User::getCurrent()->id .', 1, 0) as currentUser')
+                ));
+    }
+
     public function user()
     {
     	return $this->belongsTo('User', 'userId');
