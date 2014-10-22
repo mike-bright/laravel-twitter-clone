@@ -22,8 +22,7 @@ define([
 				return this;
 			},
 			delete: function() {
-				this.model.destroy();
-				this.remove();
+				this.model.delete();
 			}
 		});
 		return PostView;
