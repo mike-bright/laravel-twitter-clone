@@ -16,9 +16,9 @@ require.config({
 		}
 	}
 });
-
-require(['views/app', 'collections/posts'], function(AppView, AppCollection) {
-	var app_view = new AppView({
-		collection: AppCollection
+var app_view;
+require(['views/main', 'collections/posts'], function(MainView, PostCollection) {
+	app_view = new MainView({
+		collection: PostCollection
 	});
 });
