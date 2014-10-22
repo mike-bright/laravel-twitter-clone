@@ -28,7 +28,9 @@ define([
 				//get posts
 				this.collection = new PostsCollection();
 				this.listenTo(this.collection.fullCollection, 'add', this.renderPost);
-				this.collection.getFirstPage();
+				this.collection.getFirstPage().done(function() {
+					self.checkNextPage();
+				});
 			},
 			renderPost: function(item) {
 				postView = new PostView({
@@ -46,10 +48,12 @@ define([
 				this.$el.find('#user').append(userView.render().el);
 			},
 			fetchPosts: function() {
-				if (this.collection.hasNextPage())
-    				this.collection.getNextPage();
-    			else
-    				$('#loadMore').remove();
+				if (this.collection.hasNextPage()) {
+					var self = this;
+    				this.collection.getNextPage().done(function() {
+    					self.checkNextPage();
+    				});
+				}
 			},
 			createPost: function(e) {
 				e.preventDefault();
@@ -59,6 +63,13 @@ define([
 					'currentUser': 1
 				}));
 				$('#text').val('');
+			},
+			checkNextPage: function() {
+				if (this.collection.hasNextPage()) {
+					$('#loadMore').removeClass('hidden');
+				} else {
+					$('#loadMore').addClass('hidden');
+				}
 			}
 		});
 		return MainView;
