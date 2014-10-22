@@ -11,7 +11,7 @@ class PostController extends \BaseController {
 	{
 		$return = array();
 		$user = User::getCurrent();
-		
+
 		$count = Post::fetchAllHomePosts($user)->get()->count();
 		$return['count'] = $count;
 
@@ -108,6 +108,10 @@ class PostController extends \BaseController {
 	public function destroy($id)
 	{
 		$post = Post::find($id);
+
+		if ($post->user->id !== User::getCurrent()->id)
+			throw new Exception("Insufficient rights. Cannot Delete.", 1);
+			
         $post->reposts()->delete();
         $post->source()->delete();
 
