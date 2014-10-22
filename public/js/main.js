@@ -16,9 +16,7 @@ require.config({
 		}
 	}
 });
-var app_view;
-require(['views/main', 'collections/posts'], function(MainView, PostCollection) {
-	app_view = new MainView({
-		collection: PostCollection
-	});
+
+require(['router'], function(Router) {
+	Router.initialize();
 });
