@@ -18,6 +18,8 @@ define([
 			    pageSize: "limit",
 			    // Setting a parameter mapping value to null removes it from the query string
 			    currentPage: null,
+			    userName: null,
+			    userId: null,
 			    offset: function () {
 			    	return this.state.currentPage * this.state.pageSize; 
 			    }
