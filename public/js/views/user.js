@@ -12,10 +12,13 @@ define([
 			el: 'div.container',
 			template: _.template(userTemplate),
 			events: {
+				'click #loadMore': 'fetchPosts'
 			},
 			initialize: function() {
 				this.$el.html(this.template());
 				this.model.view = this;
+				this.collection = new PostsCollection();
+				this.collection.queryParams.userName = this.model.attributes.userName;
 				this.render();
 			},
 			render: function() {
@@ -29,16 +32,14 @@ define([
 				this.$el.find('#user').append(badgeView.render().el);
 			},
 			renderPosts: function() {
-				this.collection = new PostsCollection(this.model.attributes.posts);
-				this.collection.each(function(item){
-					item.attributes.currentUser = this.model.attributes.isCurrent;
-					item.attributes.userName = this.model.attributes.userName;
-					this.renderPost(item);
-				}, this);
-				// this.collection.getFirstPage();
-				console.log(this.collection);
+				this.listenTo(this.collection.fullCollection, 'add', this.renderPost);
+				var self = this;
+				this.collection.getFirstPage().done(function() {
+					self.checkNextPage();
+				});;
 			},
 			renderPost: function(item) {
+				item.attributes.userName = this.model.attributes.userName;
 				postView = new PostView({
 					model: item
 				});
@@ -46,6 +47,21 @@ define([
 					this.$el.find('#posts').prepend(postView.render().el);
 				else
 					this.$el.find('#posts').append(postView.render().el);
+			},
+			fetchPosts: function() {
+				if (this.collection.hasNextPage()) {
+					var self = this;
+    				this.collection.getNextPage().done(function() {
+    					self.checkNextPage();
+    				});
+				}
+			},
+			checkNextPage: function() {
+				if (this.collection.hasNextPage()) {
+					$('#loadMore').removeClass('hidden');
+				} else {
+					$('#loadMore').addClass('hidden');
+				}
 			}
 		});
 		return UserView;
