@@ -22,13 +22,17 @@
             </div> -->
         </div>
         <br>
-		<!-- <div class="well user-info-container">
-			{{$user->settings->bio}}
-			<br>
-			<hr/>
-			{{$user->settings->location}}
-			<br>
-			<a href="{{$user->settings->url}}">{{$user->settings->url}}</a>
-		</div> -->
+        <small>Bio:</small>
+		<div class="well user-info-container">
+			<%= settings.bio %>
+		</div>
+		<br>
+		<small>Location:</small>
+		<br>
+		<%= settings.location %>
+		<br>
+		<small>Website:</small>
+		<br>
+		<a href="<%= settings.url %>"><%= settings.url %></a>
 	</div>
 </div>
