@@ -37,11 +37,9 @@ class UserController extends BaseController {
 			->get();
 		$isFollowing = count($following) > 0;
 		$isCurrent = $user->id === $currentUser->id;
-		$posts = $user->posts->take(10);
 
 		$user['isFollowing'] = $isFollowing;
 		$user['isCurrent'] = $isCurrent;
-		$user['posts'] = $posts;
 
 		return Response::json($user);
 	}
