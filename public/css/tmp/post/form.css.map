@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAEE,uCACA;EACE,KAAK,EAAE,GAAG;EACV,KAAK,EAAE,IAAI;EACX,aAAa,EAAE,WAAW;;AAG5B,yCACA;EACE,KAAK,EAAE,GAAG;EACV,KAAK,EAAE,KAAK;EACZ,aAAa,EAAE,WAAW;EAC1B,WAAW,EAAE,IAAI",
-"sources": ["../../post/form.scss"],
-"names": [],
-"file": "form.css"
-}

@@ -1,0 +1,46 @@
+.center-text {
+  text-align: center;
+}
+
+.nav-profile-link {
+  padding: 0 !important;
+}
+
+.user-info-container {
+  margin-bottom: 0;
+}
+
+.follow-button {
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  background: #7ecf7e;
+  color: white;
+  font-size: 20;
+  text-align: center;
+}
+.follow-button.following {
+  background-color: #7E98CF;
+}
+.follow-button:hover {
+  color: white;
+  background-color: #66AC66;
+  text-decoration: none;
+  border-bottom: 5px solid rgba(133, 133, 133, 0.64);
+}
+.follow-button:hover.following {
+  background-color: #6B82B1;
+}
+
+.post-form-container input[type="text"] {
+  width: 85%;
+  float: left;
+  border-radius: 4px 0 0 4px;
+}
+.post-form-container button {
+  width: 15%;
+  float: right;
+  border-radius: 0 4px 4px 0;
+  border-left: none;
+}

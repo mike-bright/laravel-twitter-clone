@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     clean = require('gulp-clean');
 
 gulp.task('style', function() {
-    gulp.src('components/sass/**/*')
+    gulp.src('components/sass/*')
         .pipe(sass({ style: 'expanded' }))
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
         .pipe(gulp.dest('public/css/tmp'))

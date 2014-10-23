@@ -6,19 +6,39 @@
   padding: 0 !important;
 }
 
-{
-"version": 3,
-"mappings": "AAAA,YACA;EACE,UAAU,EAAE,MAAM;;;AAGpB,iBACA;EACE,OAAO,EAAE,YAAY",
-"sources": ["../app.scss"],
-"names": [],
-"file": "app.css"
+.user-info-container {
+  margin-bottom: 0;
 }
+
+.follow-button {
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  background: #7ecf7e;
+  color: white;
+  font-size: 20;
+  text-align: center;
+}
+.follow-button.following {
+  background-color: #7E98CF;
+}
+.follow-button:hover {
+  color: white;
+  background-color: #66AC66;
+  text-decoration: none;
+  border-bottom: 5px solid rgba(133, 133, 133, 0.64);
+}
+.follow-button:hover.following {
+  background-color: #6B82B1;
+}
+
 .post-form-container input[type="text"] {
   width: 85%;
   float: left;
   border-radius: 4px 0 0 4px;
 }
-.post-form-container input[type="submit"] {
+.post-form-container button {
   width: 15%;
   float: right;
   border-radius: 0 4px 4px 0;
@@ -27,10 +47,10 @@
 
 {
 "version": 3,
-"mappings": "AAEE,uCACA;EACE,KAAK,EAAE,GAAG;EACV,KAAK,EAAE,IAAI;EACX,aAAa,EAAE,WAAW;;AAG5B,yCACA;EACE,KAAK,EAAE,GAAG;EACV,KAAK,EAAE,KAAK;EACZ,aAAa,EAAE,WAAW;EAC1B,WAAW,EAAE,IAAI",
-"sources": ["../../post/form.scss"],
+"mappings": "AAAA,YACA;EACE,UAAU,EAAE,MAAM;;;AAGpB,iBACA;EACE,OAAO,EAAE,YAAY;;;AAEvB,oBACA;EACE,aAAa,EAAE,CAAC;;;AAElB,cACA;EACE,OAAO,EAAE,KAAK;EACd,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,OAAkB;EAC9B,KAAK,EAAE,KAAK;EACZ,SAAS,EAAE,EAAE;EACb,UAAU,EAAE,MAAM;;AAElB,wBACA;EACE,gBAAgB,EAAE,OAAO;;AAG3B,oBACA;EACE,KAAK,EAAE,KAAK;EACZ,gBAAgB,EAAE,OAAO;EACzB,eAAe,EAAE,IAAI;EACrB,aAAa,EAAE,mCAAmC;;AAChD,8BACA;EACE,gBAAgB,EAAE,OAAO;;;AAM/B,uCACA;EACE,KAAK,EAAE,GAAG;EACV,KAAK,EAAE,IAAI;EACX,aAAa,EAAE,WAAW;;AAE5B,2BACA;EACE,KAAK,EAAE,GAAG;EACV,KAAK,EAAE,KAAK;EACZ,aAAa,EAAE,WAAW;EAC1B,WAAW,EAAE,IAAI",
+"sources": ["../main.scss"],
 "names": [],
-"file": "form.css"
+"file": "main.css"
 }
 .post-heading {
   margin: 0;
@@ -66,63 +86,13 @@
 {
 "version": 3,
 "mappings": "AAIA,aACA;EACE,MAAM,EAAE,CAAC;EACT,MAAM,EAAE,IAAI;;;AAGd,mBACA;EACE,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,CAAC;;;AAGZ,cACA;EACE,OAAO,EAAE,YAAY;EACrB,WAAW,EAAE,IAAI;EACjB,UAAU,EAAE,IAAI;;;AAGlB,YACA;EACE,OAAO,EAAE,QAAQ;EACjB,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,OAAkB;;;AAG3B,YACA;EACE,UAAU,EAAE,IAAI;EAChB,aAAa,EAAE,CAAC;;;AAGlB,UACA;EACE,MAAM,EAAE,OAAO",
-"sources": ["../../post/list.scss"],
+"sources": ["../posts.scss"],
 "names": [],
-"file": "list.css"
+"file": "posts.css"
 }
-div.minicolors {
-  width: 100% !important;
-  margin-bottom: 10px;
-}
-div.minicolors input {
-  width: 100% !important;
-  height: 30px !important;
-}
-
-{
-"version": 3,
-"mappings": "AAAA,cACA;EACE,KAAK,EAAE,eAAe;EACtB,aAAa,EAAE,IAAI;;AAEnB,oBACA;EACE,KAAK,EAAE,eAAe;EACtB,MAAM,EAAE,eAAe",
-"sources": ["../../settings/main.scss"],
-"names": [],
-"file": "main.css"
-}
-.user-info-container {
-  margin-bottom: 0;
-}
-
-.follow-button {
-  display: block;
+div.cover-image {
   width: 100%;
-  height: 50px;
-  padding: 10px;
-  background: #7ecf7e;
-  color: white;
-  font-size: 20;
-  text-align: center;
-}
-.follow-button.following {
-  background-color: #7E98CF;
-}
-.follow-button:hover {
-  color: white;
-  background-color: #66AC66;
-  text-decoration: none;
-  border-bottom: 5px solid rgba(133, 133, 133, 0.64);
-}
-.follow-button:hover.following {
-  background-color: #6B82B1;
-}
-
-{
-"version": 3,
-"mappings": "AAAA,oBACA;EACE,aAAa,EAAE,CAAC;;;AAElB,cACA;EACE,OAAO,EAAE,KAAK;EACd,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,OAAkB;EAC9B,KAAK,EAAE,KAAK;EACZ,SAAS,EAAE,EAAE;EACb,UAAU,EAAE,MAAM;;AAElB,wBACA;EACE,gBAAgB,EAAE,OAAO;;AAG3B,oBACA;EACE,KAAK,EAAE,KAAK;EACZ,gBAAgB,EAAE,OAAO;EACzB,eAAe,EAAE,IAAI;EACrB,aAAa,EAAE,mCAAmC;;AAChD,8BACA;EACE,gBAAgB,EAAE,OAAO",
-"sources": ["../../user/badge.scss"],
-"names": [],
-"file": "badge.css"
-}
-div.header-image {
-  width: 100%;
-  position: absolute;
+  position: fixed;
   margin: 0;
   top: 0;
   left: 0;
@@ -130,21 +100,29 @@ div.header-image {
   z-index: -1;
   height: 30%;
   min-height: 300px;
+  background-color: #CDCDCD;
 }
-div.header-image img {
-  min-width: 100%;
-  width: auto;
-  height: 100%;
+div.cover-image img {
+  margin: 0 auto;
 }
 
 div.profile-content {
   margin-top: 200px;
 }
 
+#profile-back {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1000px;
+  margin-top: 250px;
+  background-color: white;
+}
+
 {
 "version": 3,
-"mappings": "AAAA,gBACA;EACE,KAAK,EAAE,IAAI;EACX,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,CAAC;EACT,GAAG,EAAE,CAAC;EACN,IAAI,EAAE,CAAC;EACP,KAAK,EAAE,CAAC;EACR,OAAO,EAAE,EAAE;EACX,MAAM,EAAE,GAAG;EACX,UAAU,EAAE,KAAK;;AAEjB,oBACA;EACE,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;;;AAIhB,mBACA;EACE,UAAU,EAAE,KAAK",
-"sources": ["../../user/profile.scss"],
+"mappings": "AAAA,eACA;EACE,KAAK,EAAE,IAAI;EACX,QAAQ,EAAE,KAAK;EACf,MAAM,EAAE,CAAC;EACT,GAAG,EAAE,CAAC;EACN,IAAI,EAAE,CAAC;EACP,KAAK,EAAE,CAAC;EACR,OAAO,EAAE,EAAE;EACX,MAAM,EAAE,GAAG;EACX,UAAU,EAAE,KAAK;EACjB,gBAAgB,EAAE,OAAO;;AAEzB,mBACA;EACE,MAAM,EAAE,MAAM;;;AAIlB,mBACA;EACE,UAAU,EAAE,KAAK;;;AAGnB,aAAc;EACZ,QAAQ,EAAE,QAAQ;EAClB,IAAI,EAAE,CAAC;EACP,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,MAAM;EACd,UAAU,EAAE,KAAK;EACjB,gBAAgB,EAAE,KAAK",
+"sources": ["../user.scss"],
 "names": [],
-"file": "profile.css"
+"file": "user.css"
 }
