@@ -60,7 +60,7 @@ define([
 
 				this.collection.create(new Post({
 					'text': $('#text').val(),
-					'userName': this.currentUser.attributes.userName,
+					'userName': this.currentUser.get('userName'),
 					'currentUser': 1
 				}));
 				$('#text').val('');

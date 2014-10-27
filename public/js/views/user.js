@@ -18,7 +18,7 @@ define([
 				this.$el.html(this.template());
 				this.model.view = this;
 				this.collection = new PostsCollection();
-				this.collection.queryParams.userName = this.model.attributes.userName;
+				this.collection.queryParams.userName = this.model.get('userName');
 				this.render();
 			},
 			render: function() {
@@ -39,7 +39,7 @@ define([
 				});;
 			},
 			renderPost: function(item) {
-				item.attributes.userName = this.model.attributes.userName;
+				item.attributes.userName = this.model.get('userName');
 				postView = new PostView({
 					model: item
 				});
