@@ -1,6 +1,7 @@
 div.cover-image {
   width: 100%;
   position: fixed;
+  text-align: center;
   margin: 0;
   top: 0;
   left: 0;
@@ -12,6 +13,8 @@ div.cover-image {
 }
 div.cover-image img {
   margin: 0 auto;
+  min-height: 100%;
+  max-width: inherit !important;
 }
 
 div.profile-content {
@@ -25,4 +28,6 @@ div.profile-content {
   height: 1000px;
   margin-top: 250px;
   background-color: white;
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, #FFFFFF 20%);
+  background: linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, #FFFFFF 20%);
 }

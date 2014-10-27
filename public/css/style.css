@@ -93,6 +93,7 @@
 div.cover-image {
   width: 100%;
   position: fixed;
+  text-align: center;
   margin: 0;
   top: 0;
   left: 0;
@@ -104,6 +105,8 @@ div.cover-image {
 }
 div.cover-image img {
   margin: 0 auto;
+  min-height: 100%;
+  max-width: inherit !important;
 }
 
 div.profile-content {
@@ -117,11 +120,13 @@ div.profile-content {
   height: 1000px;
   margin-top: 250px;
   background-color: white;
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, #FFFFFF 20%);
+  background: linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, #FFFFFF 20%);
 }
 
 {
 "version": 3,
-"mappings": "AAAA,eACA;EACE,KAAK,EAAE,IAAI;EACX,QAAQ,EAAE,KAAK;EACf,MAAM,EAAE,CAAC;EACT,GAAG,EAAE,CAAC;EACN,IAAI,EAAE,CAAC;EACP,KAAK,EAAE,CAAC;EACR,OAAO,EAAE,EAAE;EACX,MAAM,EAAE,GAAG;EACX,UAAU,EAAE,KAAK;EACjB,gBAAgB,EAAE,OAAO;;AAEzB,mBACA;EACE,MAAM,EAAE,MAAM;;;AAIlB,mBACA;EACE,UAAU,EAAE,KAAK;;;AAGnB,aAAc;EACZ,QAAQ,EAAE,QAAQ;EAClB,IAAI,EAAE,CAAC;EACP,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,MAAM;EACd,UAAU,EAAE,KAAK;EACjB,gBAAgB,EAAE,KAAK",
+"mappings": "AAAA,eACA;EACE,KAAK,EAAE,IAAI;EACX,QAAQ,EAAE,KAAK;EACf,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,CAAC;EACT,GAAG,EAAE,CAAC;EACN,IAAI,EAAE,CAAC;EACP,KAAK,EAAE,CAAC;EACR,OAAO,EAAE,EAAE;EACX,MAAM,EAAE,GAAG;EACX,UAAU,EAAE,KAAK;EACjB,gBAAgB,EAAE,OAAO;;AAEzB,mBACA;EACE,MAAM,EAAE,MAAM;EACd,UAAU,EAAE,IAAI;EAChB,SAAS,EAAE,kBAAkB;;;AAIjC,mBACA;EACE,UAAU,EAAE,KAAK;;;AAGnB,aAAc;EACZ,QAAQ,EAAE,QAAQ;EAClB,IAAI,EAAE,CAAC;EACP,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,MAAM;EACd,UAAU,EAAE,KAAK;EACjB,gBAAgB,EAAE,KAAK;EACvB,UAAU,EAAE,8DAA6D",
 "sources": ["../user.scss"],
 "names": [],
 "file": "user.css"
