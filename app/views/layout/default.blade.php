@@ -10,7 +10,7 @@
 	@else
 		@include('includes.navplain')
 	@endif
-	<div id="main" class="container">
+	<div id="main" class="container container-view">
 		@yield('content')
 	</div>
     {{HTML::script('/components/bootstrap/dist/js/bootstrap.min.js')}}

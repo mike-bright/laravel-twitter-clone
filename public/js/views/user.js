@@ -14,12 +14,20 @@ define([
 			events: {
 				'click #loadMore': 'fetchPosts'
 			},
-			initialize: function() {
+			initialize: function(options) {
 				this.$el.html(this.template());
-				this.model.view = this;
+				this.userName = options.userName || '';
+				this.model = new User({
+					'view': this
+				});
+
 				this.collection = new PostsCollection();
 				this.collection.queryParams.userName = this.model.get('userName');
-				this.render();
+
+				var self = this;
+				this.model.getUser(this.userName).done(function() {
+					self.render();
+				});
 			},
 			render: function() {
 				this.renderUser();

@@ -15,7 +15,7 @@ define([
 				'click #add': 'createPost',
 				'click #loadMore': 'fetchPosts'
 			},
-			initialize: function() {
+			initialize: function(options) {
 				this.$el.html(this.template());
 
 				//get current user

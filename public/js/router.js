@@ -2,45 +2,29 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'views/main',
-	'collections/posts',
-	'models/user',
-	'views/user'
-	], function($, _, Backbone, MainView, PostCollection, User, UserView) {
+	], function($, _, Backbone) {
 		var AppRouter = Backbone.Router.extend({
 		    routes: {
 		      '': 'showMain',
-		      'user/:username': 'showUser',
+		      'user/:userName': 'showUser',
 		      '*actions': 'defaultAction'
 		    }
 	  	});
 
-	  	var checkContainer = function(){
-	    	if(!$('div.container').length)
-	    		$('body').append("<div class='container'></div>");
-	  	}
+	    var app_router = new AppRouter;
 
 		var initialize = function(){
-		    var app_router = new AppRouter,
-		    	main_view,
-		    	app_view;
+			var self = this;
+
+			if (!this.containerView)
+				console.error('Missing containerView.');
 
 		    app_router.on('route:showMain', function(){
-		    	checkContainer();
-				main_view = new MainView({
-					collection: PostCollection
-				});
+		    	self.containerView.showMain();
 		    });
 
-		    app_router.on('route:showUser', function(username){
-		    	if (typeof main_view !== "undefined")
-		    	checkContainer();
-		    	var user = new User;
-		    	user.getUser(username).done(function() {
-			    	user_view = new UserView({
-			    		model: user
-			    	});
-		    	});
+		    app_router.on('route:showUser', function(userName){
+		    	self.containerView.showUser(userName);
 		    });
 
 		    app_router.on('route:defaultAction', function(actions){
@@ -51,6 +35,7 @@ define([
 	  	};
 
 		return {
-			initialize: initialize
+			initialize: initialize,
+			router: app_router
 		};
 });
