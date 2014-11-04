@@ -6,7 +6,7 @@
 </head>
 <body>
 	@if (User::getCurrent())
-		@include('includes.nav')
+		<nav class="navbar navbar-default navbar-view" role="navigation"></nav>
 	@else
 		@include('includes.navplain')
 	@endif
