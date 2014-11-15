@@ -1,9 +1,9 @@
 var gulp = require('gulp'),
     sass = require('gulp-ruby-sass'),
     autoprefixer = require('gulp-autoprefixer'),
-    rename = require('gulp-rename'),
     concat = require('gulp-concat'),
-    clean = require('gulp-clean');
+    clean = require('gulp-clean'),
+    notify = require("gulp-notify");
 
 gulp.task('style', function() {
     gulp.src('components/sass/*')
@@ -11,7 +11,8 @@ gulp.task('style', function() {
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
         .pipe(gulp.dest('public/css/tmp'))
         .pipe(concat('style.css'))
-        .pipe(gulp.dest('public/css'));
+        .pipe(gulp.dest('public/css'))
+        .pipe(notify('Gulp compiled css'));
 });
 
 gulp.task('clean-style', function () {
@@ -20,6 +21,6 @@ gulp.task('clean-style', function () {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('components/sass/**/*', ['style'])
+    gulp.watch('components/sass/**/*', ['style']);
 });
 
