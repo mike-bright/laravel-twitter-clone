@@ -5,9 +5,11 @@ define([
 	'views/userbadge',
 	'models/post',
 	'models/user',
+	'models/currentUser',
+	'models/settings',
 	'collections/posts',
 	'text!templates/main.html'
-	], function(_, Backbone, PostView, UserBadgeView, Post, User, PostsCollection, mainTemplate) {
+	], function(_, Backbone, PostView, UserBadgeView, Post, User, CurrentUser, Settings, PostsCollection, mainTemplate) {
 		var MainView = Backbone.View.extend({
 			el: 'div.container',
 			template: _.template(mainTemplate),
@@ -16,14 +18,18 @@ define([
 				'click #loadMore': 'fetchPosts'
 			},
 			initialize: function(options) {
+				var self = this;
 				this.$el.html(this.template());
 
 				//get current user
-				this.currentUser = new User();
-				var self = this;
-				this.currentUser.fetch().done(function() {
-					self.renderUser(self.currentUser);
+				this.currentUser = CurrentUser;
+				this.userView = new UserBadgeView({
+					model: this.currentUser
 				});
+				this.renderUser();
+
+				self.listenTo(CurrentUser, 'update sync', this.renderUser);
+				self.listenTo(Settings, 'update sync', this.renderUser);
 
 				//get posts
 				this.collection = new PostsCollection();
@@ -41,11 +47,11 @@ define([
 				else
 					this.$el.find('#posts').append(postView.render().el);
 			},
-			renderUser: function(user) {
-				userView = new UserBadgeView({
-					model: user
+			renderUser: function() {
+				var self = this;
+				this.currentUser.dfd.done(function() {
+					self.$el.find('#user').html(self.userView.render().el);
 				});
-				this.$el.find('#user').append(userView.render().el);
 			},
 			fetchPosts: function() {
 				if (this.collection.hasNextPage()) {

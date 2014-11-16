@@ -28,6 +28,6 @@ div.profile-content {
   height: 1000px;
   margin-top: 250px;
   background-color: white;
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, #FFFFFF 20%);
-  background: linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, #FFFFFF 20%);
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, white 20%);
+  background: linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, white 20%);
 }

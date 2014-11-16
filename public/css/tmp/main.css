@@ -33,14 +33,44 @@
   background-color: #6B82B1;
 }
 
-.post-form-container input[type="text"] {
+.post-form-container {
+  margin-bottom: 5px;
+}
+
+.singular-form input[type="text"] {
   width: 85%;
   float: left;
   border-radius: 4px 0 0 4px;
 }
-.post-form-container button {
+.singular-form button {
   width: 15%;
   float: right;
   border-radius: 0 4px 4px 0;
   border-left: none;
+}
+
+#backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 900;
+}
+
+#settings-view {
+  z-index: 999;
+  position: fixed;
+  top: 52px;
+  right: 0;
+  height: 100%;
+  width: 75%;
+  max-width: 700px;
+  background-color: rgba(231, 231, 231, 0.9);
+}
+#settings-view h1 .glyphicon {
+  top: 5px;
+}
+#settings-view #settings-basic-view #color {
+  width: 67px;
+  height: 60px;
 }

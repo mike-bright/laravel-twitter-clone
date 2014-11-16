@@ -5,7 +5,8 @@ require.config({
 		'backbone': 'lib/backbone/backbone',
 		'marionette': 'lib/marionette/lib/backbone.marionette',
 		'paginator': 'lib/backbone.paginator/lib/backbone.paginator',
-		'text': 'lib/text'
+		'text': 'lib/text',
+		'googleMapsPlaces': 'lib/google-maps-api-places-v3'
 	},
 	shim: {
 		underscore: {

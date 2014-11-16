@@ -33,25 +33,48 @@
   background-color: #6B82B1;
 }
 
-.post-form-container input[type="text"] {
+.post-form-container {
+  margin-bottom: 5px;
+}
+
+.singular-form input[type="text"] {
   width: 85%;
   float: left;
   border-radius: 4px 0 0 4px;
 }
-.post-form-container button {
+.singular-form button {
   width: 15%;
   float: right;
   border-radius: 0 4px 4px 0;
   border-left: none;
 }
 
-{
-"version": 3,
-"mappings": "AAAA,YACA;EACE,UAAU,EAAE,MAAM;;;AAGpB,iBACA;EACE,OAAO,EAAE,YAAY;;;AAEvB,oBACA;EACE,aAAa,EAAE,CAAC;;;AAElB,cACA;EACE,OAAO,EAAE,KAAK;EACd,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,OAAkB;EAC9B,KAAK,EAAE,KAAK;EACZ,SAAS,EAAE,EAAE;EACb,UAAU,EAAE,MAAM;;AAElB,wBACA;EACE,gBAAgB,EAAE,OAAO;;AAG3B,oBACA;EACE,KAAK,EAAE,KAAK;EACZ,gBAAgB,EAAE,OAAO;EACzB,eAAe,EAAE,IAAI;EACrB,aAAa,EAAE,mCAAmC;;AAChD,8BACA;EACE,gBAAgB,EAAE,OAAO;;;AAM/B,uCACA;EACE,KAAK,EAAE,GAAG;EACV,KAAK,EAAE,IAAI;EACX,aAAa,EAAE,WAAW;;AAE5B,2BACA;EACE,KAAK,EAAE,GAAG;EACV,KAAK,EAAE,KAAK;EACZ,aAAa,EAAE,WAAW;EAC1B,WAAW,EAAE,IAAI",
-"sources": ["../main.scss"],
-"names": [],
-"file": "main.css"
+#backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 900;
 }
+
+#settings-view {
+  z-index: 999;
+  position: fixed;
+  top: 52px;
+  right: 0;
+  height: 100%;
+  width: 75%;
+  max-width: 700px;
+  background-color: rgba(231, 231, 231, 0.9);
+}
+#settings-view h1 .glyphicon {
+  top: 5px;
+}
+#settings-view #settings-basic-view #color {
+  width: 67px;
+  height: 60px;
+}
+
 .post-heading {
   margin: 0;
   border: none;
@@ -83,13 +106,6 @@
   cursor: pointer;
 }
 
-{
-"version": 3,
-"mappings": "AAIA,aACA;EACE,MAAM,EAAE,CAAC;EACT,MAAM,EAAE,IAAI;;;AAGd,mBACA;EACE,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,CAAC;;;AAGZ,cACA;EACE,OAAO,EAAE,YAAY;EACrB,WAAW,EAAE,IAAI;EACjB,UAAU,EAAE,IAAI;;;AAGlB,YACA;EACE,OAAO,EAAE,QAAQ;EACjB,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,OAAkB;;;AAG3B,YACA;EACE,UAAU,EAAE,IAAI;EAChB,aAAa,EAAE,CAAC;;;AAGlB,UACA;EACE,MAAM,EAAE,OAAO",
-"sources": ["../posts.scss"],
-"names": [],
-"file": "posts.css"
-}
 div.cover-image {
   width: 100%;
   position: fixed;
@@ -120,14 +136,6 @@ div.profile-content {
   height: 1000px;
   margin-top: 250px;
   background-color: white;
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, #FFFFFF 20%);
-  background: linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, #FFFFFF 20%);
-}
-
-{
-"version": 3,
-"mappings": "AAAA,eACA;EACE,KAAK,EAAE,IAAI;EACX,QAAQ,EAAE,KAAK;EACf,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,CAAC;EACT,GAAG,EAAE,CAAC;EACN,IAAI,EAAE,CAAC;EACP,KAAK,EAAE,CAAC;EACR,OAAO,EAAE,EAAE;EACX,MAAM,EAAE,GAAG;EACX,UAAU,EAAE,KAAK;EACjB,gBAAgB,EAAE,OAAO;;AAEzB,mBACA;EACE,MAAM,EAAE,MAAM;EACd,UAAU,EAAE,IAAI;EAChB,SAAS,EAAE,kBAAkB;;;AAIjC,mBACA;EACE,UAAU,EAAE,KAAK;;;AAGnB,aAAc;EACZ,QAAQ,EAAE,QAAQ;EAClB,IAAI,EAAE,CAAC;EACP,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,MAAM;EACd,UAAU,EAAE,KAAK;EACjB,gBAAgB,EAAE,KAAK;EACvB,UAAU,EAAE,8DAA6D",
-"sources": ["../user.scss"],
-"names": [],
-"file": "user.css"
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, white 20%);
+  background: linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, white 20%);
 }

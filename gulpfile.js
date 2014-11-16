@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     concat = require('gulp-concat'),
     clean = require('gulp-clean'),
-    notify = require("gulp-notify");
+    notify = require("gulp-notify"),
+    livereload = require('gulp-livereload');
 
 gulp.task('style', function() {
     gulp.src('components/sass/*')
@@ -12,7 +13,8 @@ gulp.task('style', function() {
         .pipe(gulp.dest('public/css/tmp'))
         .pipe(concat('style.css'))
         .pipe(gulp.dest('public/css'))
-        .pipe(notify('Gulp compiled css'));
+        .pipe(notify('Gulp compiled css'))
+        .pipe(livereload());
 });
 
 gulp.task('clean-style', function () {
@@ -22,5 +24,7 @@ gulp.task('clean-style', function () {
 
 gulp.task('watch', function() {
     gulp.watch('components/sass/**/*', ['style']);
+    livereload.listen();
+    gulp.watch('public/js/**').on('change', livereload.changed);
 });
 

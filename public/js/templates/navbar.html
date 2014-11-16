@@ -14,14 +14,15 @@
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-right">
       <form class="navbar-form navbar-left" role="search" action="/search">
-        <div class="form-group">
+        <div class="form-group singular-form">
           <input type="text" class="form-control" placeholder="Search">
+          <button type="submit" class="btn btn-default">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
         </div>
-        <button type="submit" class="btn btn-default">
-          <span class="glyphicon glyphicon-search"></span>
-        </button>
       </form>
-      <li><a href="/settings" title="Settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+      <li><a class="settings" title="Settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+      <li><a class="settings-close" title="Close Settings" style="display:none;"><span class="glyphicon glyphicon-remove"></span></a></li>
       <li><a href="{{action('UserController@logout')}}">Logout</a></li>
       <li>
           <a href="/#user/{{User::getCurrent()->userName}}" class="nav-profile-link">
@@ -31,3 +32,5 @@
     </ul>
   </div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->
+<div id="settings-view" style="display:none;"></div>
+<div id="backdrop" style="display:none"></div>

@@ -12,7 +12,7 @@ define([
 			el: 'div.container',
 			template: _.template(userTemplate),
 			events: {
-				'click #loadMore': 'fetchPosts'
+				'click .user-load-more': 'fetchPosts'
 			},
 			initialize: function(options) {
 				this.$el.html(this.template());
@@ -28,6 +28,8 @@ define([
 				this.model.getUser(this.userName).done(function() {
 					self.render();
 				});
+
+				this.loadMoreButton = this.$el.find('.user-load-more');
 			},
 			render: function() {
 				this.renderUser();
@@ -66,9 +68,9 @@ define([
 			},
 			checkNextPage: function() {
 				if (this.collection.hasNextPage()) {
-					$('#loadMore').removeClass('hidden');
+					this.loadMoreButton.removeClass('hidden');
 				} else {
-					$('#loadMore').addClass('hidden');
+					this.loadMoreButton.addClass('hidden');
 				}
 			}
 		});

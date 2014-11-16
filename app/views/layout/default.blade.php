@@ -17,5 +17,6 @@
 	@if (User::getCurrent())
 		<script data-main="js/main" src="js/lib/requirejs/require.js"></script>
 	@endif
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 </body>
 </html>

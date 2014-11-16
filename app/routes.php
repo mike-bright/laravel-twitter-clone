@@ -21,7 +21,8 @@ Route::resource('/api/post', 'PostController', array('before' => 'auth'));
 Route::post('/api/search/{query}', array('before' => 'auth', 'uses' => 'PostController@search'));
 
 //SettingsController
-Route::match(array('GET', 'POST'), '/settings', array('before' => 'auth', 'uses' => 'SettingsController@showUserSettings'));
+Route::get('/api/settings', array('before' => 'auth', 'uses' => 'SettingsController@index'));
+Route::put('/api/settings', array('before' => 'auth', 'uses' => 'SettingsController@update'));
 
 //RepostController
 Route::get('/api/repost/create/{sourcePostId}', array('before' => 'auth', 'uses' => 'RepostController@create'));
